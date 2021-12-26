@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.EntityNotFoundException;
+
 @RestController
 @RequestMapping("/students")
 public class StudentController {
@@ -30,7 +32,9 @@ public class StudentController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getStudentById(@PathVariable Long id) {
-        return new ResponseEntity<>(studentRepository.findById(id), HttpStatus.OK);
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> buildEntityNotFoundException(id));
+        return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
     @PostMapping
@@ -47,5 +51,9 @@ public class StudentController {
     public ResponseEntity<?> deleteStudentById(@PathVariable Long id) {
         studentRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    private EntityNotFoundException buildEntityNotFoundException(Long id) {
+        return new EntityNotFoundException(String.format("Student with id %s doesn't exist", id));
     }
 }
