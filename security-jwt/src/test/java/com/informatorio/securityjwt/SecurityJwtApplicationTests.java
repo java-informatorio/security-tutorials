@@ -1,10 +1,10 @@
-package com.informatorio.securitybasic;
+package com.informatorio.securityjwt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SecurityBasicApplicationTests {
+class SecurityJwtApplicationTests {
 
     @Test
     void contextLoads() {
