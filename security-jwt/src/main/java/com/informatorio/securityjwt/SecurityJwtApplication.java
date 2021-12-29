@@ -1,13 +1,13 @@
-package com.informatorio.securitybasic;
+package com.informatorio.securityjwt;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SecurityBasicApplication {
+public class SecurityJwtApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SecurityBasicApplication.class, args);
+        SpringApplication.run(SecurityJwtApplication.class, args);
     }
 
 }
