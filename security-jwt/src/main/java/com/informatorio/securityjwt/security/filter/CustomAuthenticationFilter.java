@@ -58,6 +58,5 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
                 .sign(algorithm);
         response.setHeader("access_token", accessToken);
         response.setHeader("refresh_token", refreshToken);
-        super.successfulAuthentication(request, response, chain, authResult);
     }
 }
